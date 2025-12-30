@@ -1,0 +1,77 @@
+name: Portal Deploy - Production
+
+on:
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: aurigraph/portal
+
+jobs:
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Run tests
+        working-directory: ./frontend
+        run: npm run test -- --coverage --watchAll=false
+
+      - name: Build for production
+        working-directory: ./frontend
+        env:
+          REACT_APP_API_BASE_URL: https://dlt.aurigraph.io/api/v11
+        run: npm run build
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:v${{ github.run_number }}
+
+      - name: Deploy to production
+        env:
+          PROD_HOST: ${{ secrets.PROD_HOST }}
+          PROD_USER: ${{ secrets.PROD_USER }}
+          PROD_KEY: ${{ secrets.PROD_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$PROD_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -i ~/.ssh/id_rsa $PROD_USER@$PROD_HOST "cd /opt/portal && bash deployment/deploy-portal.sh production"
+
+      - name: Production health check
+        run: |
+          for i in {1..60}; do
+            if curl -sf https://dlt.aurigraph.io/health > /dev/null 2>&1; then
+              echo "✅ Production portal is healthy"
+              exit 0
+            fi
+            echo "Waiting for production portal... ($i/60)"
+            sleep 10
+          done
+          echo "❌ Production portal failed to become healthy"
+          exit 1
+
+      - name: Slack notification
+        if: always()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: "🚀 Portal production deployment: ${{ job.status }}"
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}

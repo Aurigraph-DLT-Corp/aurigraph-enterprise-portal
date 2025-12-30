@@ -1,0 +1,69 @@
+name: Portal Deploy - Staging
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/portal-deploy-staging.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build for production
+        working-directory: ./frontend
+        env:
+          REACT_APP_API_BASE_URL: http://staging.dlt.aurigraph.io:9003/api/v11
+        run: npm run build
+
+      - name: Build Docker image
+        run: |
+          docker build -t aurigraph/portal:staging-${{ github.sha }} frontend/
+          docker tag aurigraph/portal:staging-${{ github.sha }} aurigraph/portal:staging-latest
+
+      - name: Deploy to staging
+        env:
+          STAGING_HOST: ${{ secrets.STAGING_HOST }}
+          STAGING_USER: ${{ secrets.STAGING_USER }}
+          STAGING_KEY: ${{ secrets.STAGING_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$STAGING_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -i ~/.ssh/id_rsa $STAGING_USER@$STAGING_HOST "cd /opt/portal && git pull origin main && docker-compose -f infrastructure/docker/docker-compose.portal.yml up -d"
+
+      - name: Health check
+        run: |
+          for i in {1..30}; do
+            if curl -sf http://staging.dlt.aurigraph.io/health > /dev/null 2>&1; then
+              echo "✅ Portal is healthy"
+              exit 0
+            fi
+            echo "Waiting for portal to become healthy... ($i/30)"
+            sleep 5
+          done
+          echo "❌ Portal failed to become healthy"
+          exit 1
+
+      - name: Slack notification
+        if: always()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: "Portal staging deployment: ${{ job.status }}"
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
