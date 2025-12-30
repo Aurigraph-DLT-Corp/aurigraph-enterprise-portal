@@ -1,0 +1,170 @@
+/* Profile Page Styling */
+
+.profile-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fafafa;
+  padding: 24px;
+}
+
+.profile-header {
+  background: #fff;
+  padding: 32px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.profile-header h2 {
+  color: #001529;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.profile-header .ant-typography-secondary {
+  font-size: 14px;
+  color: #666;
+}
+
+.profile-stats {
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .ant-statistic-title {
+  color: #666;
+  font-size: 12px;
+}
+
+.stat-card .ant-statistic-content {
+  color: #001529;
+  font-weight: 600;
+}
+
+.ant-tabs {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.ant-tabs-nav {
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #1890ff;
+  font-weight: 600;
+}
+
+.api-key-table {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.project-table {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.activity-table {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.guide-link {
+  color: #1890ff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.guide-link:hover {
+  color: #40a9ff;
+}
+
+.ant-card {
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
+}
+
+.ant-input,
+.ant-input-password {
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.ant-input:disabled,
+.ant-input-password:disabled {
+  background: #fafafa;
+  border-color: #e8e8e8;
+  color: #666;
+}
+
+.ant-table {
+  font-size: 14px;
+}
+
+.ant-table-thead > tr > th {
+  background: #fafafa;
+  color: #001529;
+  font-weight: 600;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: #f5f5f5;
+}
+
+.modal-content {
+  padding: 24px 0;
+}
+
+.ant-modal-header {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.ant-modal-title {
+  color: #001529;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 12px;
+  }
+
+  .profile-header {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .ant-tabs {
+    padding: 16px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+}

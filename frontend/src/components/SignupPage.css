@@ -1,0 +1,131 @@
+/* Signup Page Styling */
+
+.signup-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+.signup-hero {
+  background: linear-gradient(135deg, #001529 0%, #0d2c4a 100%);
+  color: #fff;
+  padding: 80px 24px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.signup-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.signup-hero-title {
+  color: #fff;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.signup-hero-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.signup-benefits {
+  max-width: 1200px;
+  margin: -40px auto 60px;
+  padding: 0 24px;
+}
+
+.benefit-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.benefit-card h4 {
+  color: #001529;
+  font-weight: 600;
+  margin: 12px 0 8px;
+}
+
+.onboarding-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.onboarding-card h3 {
+  color: #001529;
+  font-weight: 600;
+}
+
+.checklist-card {
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.signup-form-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+}
+
+.signup-form-card h3 {
+  color: #001529;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.preferences-display {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.pref-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #666;
+}
+
+.pref-item:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .signup-hero-title {
+    font-size: 32px;
+  }
+
+  .signup-hero-subtitle {
+    font-size: 18px;
+  }
+
+  .signup-form-card {
+    padding: 24px;
+  }
+}

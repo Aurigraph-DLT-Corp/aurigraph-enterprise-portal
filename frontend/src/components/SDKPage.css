@@ -1,0 +1,252 @@
+/* SDK Page Styling */
+
+.sdk-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+.sdk-hero {
+  background: linear-gradient(135deg, #001529 0%, #0d2c4a 100%);
+  color: #fff;
+  padding: 60px 24px;
+  margin-bottom: 60px;
+}
+
+.sdk-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sdk-hero-title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.sdk-hero-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.sdk-hero-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sdk-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-box {
+  text-align: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #faad14;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sdk-hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sdk-search-section {
+  max-width: 1200px;
+  margin: -40px auto 60px;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
+.sdk-search-input {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.sdk-guides-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.category-section {
+  margin-bottom: 60px;
+}
+
+.category-title {
+  color: #001529;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px !important;
+}
+
+.sdk-guide-card {
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sdk-guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.guide-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.guide-title-section {
+  flex: 1;
+}
+
+.guide-description {
+  color: #666;
+  font-size: 13px;
+  margin: 12px 0 !important;
+}
+
+.guide-meta {
+  color: #999;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.guide-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+}
+
+.sdk-benefits-section {
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding: 60px 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.section-title {
+  text-align: center;
+  color: #001529;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.section-description {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.benefit-card {
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  padding: 24px;
+  text-align: center;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.sdk-getting-started {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.getting-started-card {
+  padding: 40px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sdk-footer-cta {
+  max-width: 1200px;
+  margin: 60px auto 0;
+  padding: 0 24px 60px;
+}
+
+.footer-cta-card {
+  background: linear-gradient(135deg, #001529 0%, #0d2c4a 100%);
+  color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.footer-cta-card h3 {
+  color: #fff;
+  margin: 0;
+}
+
+.guide-details {
+  padding: 16px 0;
+}
+
+.guide-details ul {
+  padding-left: 24px;
+  margin: 16px 0;
+}
+
+.guide-details ul li {
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .sdk-hero-title {
+    font-size: 32px;
+  }
+
+  .sdk-hero-subtitle {
+    font-size: 18px;
+  }
+
+  .sdk-hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sdk-benefits-section {
+    padding: 40px 16px;
+  }
+}
