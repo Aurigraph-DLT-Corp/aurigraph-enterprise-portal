@@ -18,10 +18,28 @@ out/
 *~
 .DS_Store
 
-# Environment
+# Environment & Secrets
 .env
 .env.local
 .env.*.local
+.env.*.local.secret
+.env.production.local
+.env.test.local
+
+# Secrets & Credentials
+.secrets/
+**/secrets.json
+**/*.key
+**/*.pem
+**/*.pfx
+*.key.txt
+*.secret.txt
+
+# API Keys & Credentials
+*API_KEY*
+*TOKEN*
+*SECRET*
+docker-compose.override.yml
 
 # Testing
 coverage/
